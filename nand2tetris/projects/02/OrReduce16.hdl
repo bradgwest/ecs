@@ -1,0 +1,29 @@
+/**
+ * Or Reduce 16:
+ * out = Any(or)
+ */
+
+CHIP OrReduce16 {
+    IN a[16];
+    OUT out;
+
+    PARTS:
+    Or(a=a[0], b=a[1], out=t1);
+    Or(a=a[2], b=a[3], out=t2);
+    Or(a=a[4], b=a[5], out=t3);
+    Or(a=a[6], b=a[7], out=t4);
+    Or(a=a[8], b=a[9], out=t5);
+    Or(a=a[10], b=a[11], out=t6);
+    Or(a=a[12], b=a[13], out=t7);
+    Or(a=a[14], b=a[15], out=t8);
+
+    Or(a=t1, b=t2, out=t9);
+    Or(a=t3, b=t4, out=t10);
+    Or(a=t5, b=t6, out=t11);
+    Or(a=t7, b=t8, out=t12);
+
+    Or(a=t9, b=t10, out=t13);
+    Or(a=t11, b=t12, out=t14);
+
+    Or(a=t13, b=t14, out=out);
+}

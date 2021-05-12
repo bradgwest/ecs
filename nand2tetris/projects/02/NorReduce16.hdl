@@ -1,0 +1,13 @@
+/**
+ * Nor Reduce 16:
+ * out = Not(Any(or))
+ */
+
+CHIP NorReduce16 {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    OrReduce16(a=in, out=orout);
+    Not(in=orout, out=out);
+}

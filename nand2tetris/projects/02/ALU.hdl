@@ -60,4 +60,13 @@ CHIP ALU {
 
     // Mux4Way(And, Add, NegateAnd, NegateAdd, no, f)
     Mux4Way16(a=xandy, b=addxy, c=notxandy, d=notaddxy, sel[0]=f, sel[1]=no, out=out);
+
+    // hack to get around naming
+    Mux4Way16(a=xandy, b=addxy, c=notxandy, d=notaddxy, sel[0]=f, sel[1]=no, out=tmpout);
+
+    // zr
+    NorReduce16(in=tmpout, out=zr);
+
+    // ng
+    Neg(in=tmpout, out=ng);
 }
